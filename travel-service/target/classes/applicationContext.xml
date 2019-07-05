@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+ http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd http://www.springframework.org/schema/context
+ http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:component-scan base-package="com.travel.mapper"></context:component-scan>
+
+    <dubbo:application name="dubbo-service"/>
+    <!-- use multicast registry center to export service -->
+    <dubbo:registry address="zookeeper://39.106.106.206:12181"/>
+    <!-- use dubbo protocol to export service on port 20880 -->
+    <!--<dubbo:protocol name="dubbo" port="20880"/>-->
+    <!-- service implementation, as same as regular local bean -->
+    <bean id="registerService" class="com.travel.serviceImpl.RegisterImpl" />
+    <!-- declare the service interface to be exported -->
+    <dubbo:service interface="com.travel.service.RegisterService" ref="registerService"/>
+
+
+
+
+
+
+
+</beans>
