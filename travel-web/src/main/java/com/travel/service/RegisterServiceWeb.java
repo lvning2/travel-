@@ -14,11 +14,12 @@ public class RegisterServiceWeb {
     public Result register(TbUser tbUser){
         try {
             System.out.println("tbUser:"+tbUser.getUsername()+tbUser.getPassword());
+            System.out.println("------------ "+registerService);
             registerService.register(tbUser);
-            return new Result(true,"注册成功");
+            return new Result(true,"注册成功true");
         } catch (Exception e) {
             e.printStackTrace();
-            return new Result(false,"注册失败");
+            return new Result(false,"注册失败false");
         }
     }
 

@@ -24,11 +24,12 @@
     </bean>
 
 
-    <context:component-scan base-package="com.travel"></context:component-scan>
+    <context:component-scan base-package="com.travel.handler"></context:component-scan>
+    <context:component-scan base-package="com.travel.service"></context:component-scan>
+
     <dubbo:application name="travel-web"></dubbo:application>
     <dubbo:registry address="zookeeper://39.106.106.206:12181"></dubbo:registry>
-
-
+    <dubbo:reference id="registerService" check="false" interface="com.travel.service.RegisterService"/>
     <dubbo:annotation package="com.travel.service"></dubbo:annotation>
 
 

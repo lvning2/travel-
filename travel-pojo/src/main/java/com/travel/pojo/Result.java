@@ -1,6 +1,8 @@
 package com.travel.pojo;
 
-public class Result {
+import java.io.Serializable;
+
+public class Result implements Serializable {
 
     private String msg;
     private boolean flog;
@@ -11,6 +13,10 @@ public class Result {
         this.flog=flog;
         this.msg=msg;
     }
+
+
+
+
 
 
     public String getMsg() {

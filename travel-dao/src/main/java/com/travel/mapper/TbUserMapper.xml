@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.mapper.TbUserMapper">
-  <resultMap id="BaseResultMap" type="com.po.TbUser">
+<mapper namespace="com.travel.mapper.TbUserMapper">
+  <resultMap id="BaseResultMap" type="com.travel.mapper.TbUserMapper">
     <id column="uid" jdbcType="INTEGER" property="uid" />
     <result column="username" jdbcType="VARCHAR" property="username" />
     <result column="password" jdbcType="VARCHAR" property="password" />
@@ -69,7 +69,7 @@
   <sql id="Base_Column_List">
     uid, username, password, telephone, createtime
   </sql>
-  <select id="selectByExample" parameterType="com.po.TbUserExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.travel.pojo.TbUserExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -93,19 +93,19 @@
     delete from tb_user
     where uid = #{uid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.po.TbUserExample">
+  <delete id="deleteByExample" parameterType="com.travel.pojo.TbUserExample">
     delete from tb_user
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.po.TbUser">
+  <insert id="insert" parameterType="com.travel.mapper.TbUserMapper">
     insert into tb_user (uid, username, password, 
       telephone, createtime)
     values (#{uid,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
       #{telephone,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.po.TbUser">
+  <insert id="insertSelective" parameterType="com.travel.mapper.TbUserMapper">
     insert into tb_user
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="uid != null">
@@ -142,7 +142,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.po.TbUserExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.travel.pojo.TbUserExample" resultType="java.lang.Long">
     select count(*) from tb_user
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -182,7 +182,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.po.TbUser">
+  <update id="updateByPrimaryKeySelective" parameterType="com.travel.mapper.TbUserMapper">
     update tb_user
     <set>
       <if test="username != null">
@@ -200,7 +200,7 @@
     </set>
     where uid = #{uid,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.po.TbUser">
+  <update id="updateByPrimaryKey" parameterType="com.travel.mapper.TbUserMapper">
     update tb_user
     set username = #{username,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},

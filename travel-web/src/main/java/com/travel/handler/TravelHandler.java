@@ -29,9 +29,8 @@ public class TravelHandler {
 
     @RequestMapping("/regist")
     @ResponseBody
-    public Result regist(TbUser tbUser){
-        System.out.println("-----------------------12121212121211"+ tbUser.getPassword()+tbUser.getUsername());
-        return registerServiceWeb.register(tbUser);
+    public String regist(TbUser tbUser){
+        return registerServiceWeb.register(tbUser).getMsg();
     }
 
     @RequestMapping("/zz")
